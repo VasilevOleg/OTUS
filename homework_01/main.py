@@ -9,7 +9,7 @@ def power_numbers(*nums):
     print(sq)
 
 
-power_numbers(3, 5, 6, 7)
+# power_numbers(3, 5, 6, 7)
 
 # filter types
 ODD = "odd"
@@ -37,4 +37,4 @@ def filter_numbers(nums, filter_numbers):
         print("Invalid filter type")
 
 
-filter_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], EVEN)
+# filter_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], EVEN)
