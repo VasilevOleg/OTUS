@@ -18,16 +18,16 @@ EVEN = "even"
 PRIME = "prime"
 
 
-def filter_numbers(nums, filter_numbers):
-    if filter_numbers == ODD:
+def filter_numbers(nums, filter_numbers_):
+    if filter_numbers_ == ODD:
         result = [num for num in nums if num % 2 != 0]
         # print(result)
         return result
-    elif filter_numbers == EVEN:
+    elif filter_numbers_ == EVEN:
         result = [num for num in nums if num % 2 == 0]
         print(result)
         return result
-    elif filter_numbers == PRIME:
+    elif filter_numbers_ == PRIME:
         def is_prime(n):
             for i in range(2, int(n ** 0.5) + 1):
                 if n % i == 0:
