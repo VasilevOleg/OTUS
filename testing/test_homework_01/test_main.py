@@ -41,7 +41,7 @@ def f (request ):
 @pytest .mark .parametrize ("f",[homework .ODD ,homework .EVEN ,homework .PRIME ],indirect =True )
 def test_filter_numbers (f, m ):
     OO0OOOOOO0O0OOOO0 ,OO0O0O000OO00OO0O ,OO000OO0OO0OOOO0O =f
-    OOOO0O00O0O0O0000 = homework.filter_numbers(OO0O0O000OO00OO0O, OO0OOOOOO0O0OOOO0)
+    OOOO0O00O0O0O0000 =homework .filter_numbers (OO0O0O000OO00OO0O ,OO0OOOOOO0O0OOOO0 )
     assert OOOO0O00O0O0O0000 ==OO000OO0OO0OOOO0O
 
 @pytest .mark .parametrize ("p", [
@@ -51,5 +51,5 @@ def test_filter_numbers (f, m ):
 ])
 def test_filter_numbers_consts(p):
     OO0OOOOOO0O0OOOO0 ,OO0O0O000OO00OO0O ,OO000OO0OO0OOOO0O =p
-    OOOO0O00O0O0O0000 = homework.filter_numbers(OO0O0O000OO00OO0O, OO0OOOOOO0O0OOOO0)
+    OOOO0O00O0O0O0000 =homework .filter_numbers (OO0O0O000OO00OO0O ,OO0OOOOOO0O0OOOO0 )
     assert OOOO0O00O0O0O0000 ==OO000OO0OO0OOOO0O
