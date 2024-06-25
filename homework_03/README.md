@@ -7,7 +7,7 @@ docker build . -t web
 Run:
 
 ```shell
-docker run -it -p 8000:5000 web
+docker run -it -p 8000:8000 web
 ```
 
 ### Домашнее задание "Docker контейнер c веб-приложением"
