@@ -14,7 +14,7 @@ engine = create_async_engine(PG_CONN_URI, echo=True)
 Base = declarative_base()
 
 # Создание асинхронной сессии
-SessionLocal = sessionmaker(
+Session = sessionmaker(
     bind=engine,
     class_=AsyncSession,
     expire_on_commit=False
