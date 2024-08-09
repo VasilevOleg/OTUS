@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить событие{% endblock %}
+
+{% block content %}
+<div class="mt-4 p-5 bg-light text-dark rounded">
+    <h1>Add new event</h1>
+    <form method="POST" action="{{ url_for('add_event') }}">
+        <div class="row mb-3">
+            <div class="col-auto">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control form-control-sm" id="date" name="date" required>
+            </div>
+            <div class="col-auto">
+                <label for="alarm_time" class="form-label">Time</label>
+                <input type="time" step="1" class="form-control form-control-sm" id="alarm_time" name="alarm_time" required>
+            </div>
+            <div class="col-auto">
+                <label for="duration" class="form-label">Duration</label>
+                <input type="number" class="form-control form-control-sm" id="duration" name="duration">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="channel" class="form-label">Channel</label>
+            <input type="text" class="form-control" id="channel" name="channel" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="color">Impact</label>
+            <select class="form-control" id="color" name="color">
+                <option value="table-default" data-bg-color="#ffffff" style="background-color: #ffffff;" selected>Default</option>
+                <option value="table-danger" data-bg-color="#f8d7da" style="background-color: #f8d7da;">Danger</option>
+                <option value="table-warning" data-bg-color="#fff3cd" style="background-color: #fff3cd;">Warning</option>
+                <option value="table-info" data-bg-color="#d1ecf1" style="background-color: #d1ecf1;">Info</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = today;
+
+        const now = new Date().toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('alarm_time').value = now;
+    });
+</script>
+{% endblock %}
