@@ -1,0 +1,71 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Event List</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Date</th>
+            <th>CSQ</th>
+            <th>SV</th>
+            <th>BEAM</th>
+            <th>Start</th>
+            <th>Finish</th>
+            <th>Bytes</th>
+            <th>Duration</th>
+            <th>Speed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.date }}</td>
+            <td>{{ event.csq }}</td>
+            <td>{{ event.sv }}</td>
+            <td>{{ event.beam }}</td>
+            <td>{{ event.start }}</td>
+            <td>{{ event.finish }}</td>
+            <td>{{ event.bytes }}</td>
+            <td>{{ event.duration }}</td>
+            <td>{{ event.speed }}</td>
+            <td>
+                <a href="{% url 'event_detail' event.id %}" class="btn btn-info btn-sm">View</a>
+                <form action="{% url 'event_delete' event.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav>
+    <ul class="pagination justify-content-center">
+        {% if events.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; first</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ events.previous_page_number }}">previous</a>
+            </li>
+        {% endif %}
+
+        <li class="page-item disabled">
+            <span class="page-link">Page {{ events.number }} of {{ events.paginator.num_pages }}</span>
+        </li>
+
+        {% if events.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ events.next_page_number }}">next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ events.paginator.num_pages }}">last &raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
