@@ -117,6 +117,7 @@ env.bak/
 venv.bak/
 .lessons
 lessons/
+homework_06/
 
 # Spyder project settings
 .spyderproject
@@ -141,3 +142,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+

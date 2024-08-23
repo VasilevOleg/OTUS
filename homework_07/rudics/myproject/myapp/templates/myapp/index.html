@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h2>Event List</h2>
+<ul>
+    {% for event in events %}
+        <li>
+            <strong>{{ event.date }}:</strong> CSQ: {{ event.csq }}, SV: {{ event.sv }}, BEAM: {{ event.beam }},
+            Start: {{ event.start }}, Finish: {{ event.finish }}, Bytes: {{ event.bytes }},
+            Duration: {{ event.duration }}, Speed: {{ event.speed }}
+            <form action="{% url 'delete_event' event.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Del</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
