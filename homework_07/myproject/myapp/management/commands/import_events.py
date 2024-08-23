@@ -6,7 +6,7 @@ class Command(BaseCommand):
     help = 'Imports events from JSON file'
 
     def handle(self, *args, **kwargs):
-        with open('/home/oleg/PycharmProjects/OTUS/homework_07/rudics/db/events.json') as f:
+        with open('/home/oleg/PycharmProjects/OTUS/homework_07/db/events.json') as f:
             events = json.load(f)
             for event in events:
                 Event.objects.create(
