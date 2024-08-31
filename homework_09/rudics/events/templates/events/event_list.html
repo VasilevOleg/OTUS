@@ -1,0 +1,68 @@
+{% extends "events/base.html" %}
+
+{% block title %}Event List{% endblock %}
+
+{% block content %}
+    <h2>Event List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>CSQ</th>
+                <th>SV</th>
+                <th>Beam</th>
+                <th>Transfer</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Bytes</th>
+                <th>Duration</th>
+                <th>Speed</th>
+                <th>Change</th> <!-- Столбец Change -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.csq }}</td>
+                    <td>{{ event.sv }}</td>
+                    <td>{{ event.beam }}</td>
+                    <td>{{ event.transfer }}</td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.finish }}</td>
+                    <td>{{ event.bytes }}</td>
+                    <td>{{ event.duration }}</td>
+                    <td>{{ event.speed }}</td>
+                    <td>
+                        <!-- Кнопка View для просмотра события -->
+                        <a href="{% url 'event_detail' event.id %}" class="btn btn-info btn-sm">View</a>
+                        <!-- Кнопка Del для удаления события -->
+                        <a href="{% url 'event_delete' event.id %}" class="btn btn-danger btn-sm">Del</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Добавление пагинации -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if events.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ events.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ events.number }} of {{ events.paginator.num_pages }}.
+            </span>
+
+            {% if events.has_next %}
+                <a href="?page={{ events.next_page_number }}">next</a>
+                <a href="?page={{ events.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <!-- Кнопка для добавления нового события -->
+    <a href="{% url 'event_add' %}" class="btn btn-success">Add Event</a>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "events/base.html" %}
+
+{% block title %}Event Detail{% endblock %}
+
+{% block content %}
+    <h2>Event Detail</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Date</th>
+            <td>{{ event.date }}</td>
+        </tr>
+        <tr>
+            <th>CSQ</th>
+            <td>{{ event.csq }}</td>
+        </tr>
+        <tr>
+            <th>SV</th>
+            <td>{{ event.sv }}</td>
+        </tr>
+        <tr>
+            <th>Beam</th>
+            <td>{{ event.beam }}</td>
+        </tr>
+        <tr>
+            <th>Transfer</th>  <!-- Добавляем отображение поля Transfer -->
+            <td>{{ event.transfer }}</td>
+        </tr>
+        <tr>
+            <th>Start Time</th>
+            <td>{{ event.start }}</td>
+        </tr>
+        <tr>
+            <th>Finish Time</th>
+            <td>{{ event.finish }}</td>
+        </tr>
+        <tr>
+            <th>Bytes</th>
+            <td>{{ event.bytes }}</td>
+        </tr>
+        <tr>
+            <th>Duration (seconds)</th>
+            <td>{{ event.duration }}</td>
+        </tr>
+        <tr>
+            <th>Speed (kB/s)</th>
+            <td>{{ event.speed }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'event_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}
